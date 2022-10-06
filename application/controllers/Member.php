@@ -78,9 +78,9 @@ class Member extends CI_Controller
 
     public function myProfil()
     {
-        $data['judul'] = 'Profil Saya';
         $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data = [
+            'judul' => 'Profil Saya',
             'image' => $user['image'],
             'user' => $user['nama'],
             'email' => $user['email'],
@@ -94,9 +94,9 @@ class Member extends CI_Controller
 
     public function ubahProfil()
     {
-        $data['judul'] = 'Profil Saya';
         $user = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $data = [
+            'judul' => 'Ubah Profil',
             'image' => $user['image'],
             'user' => $user['nama'],
             'email' => $user['email'],
