@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 defined('BASEPATH') or exit('No Direct Script Access Allowed');
 date_default_timezone_set('Asia/Jakarta');
 

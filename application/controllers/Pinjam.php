@@ -1,5 +1,5 @@
 <?php 
-error_reporting(0);
+
 if (!defined('BASEPATH')) exit('No Direct Script Access Allowed');
 
 class Pinjam extends CI_Controller

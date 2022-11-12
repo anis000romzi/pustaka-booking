@@ -9,7 +9,8 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <div class="text-md font-weight-bold text-white text-uppercase mb-1">Jumlah Anggota</div>
-              <div class="h1 mb-0 font-weight-bold text-white"><?= $this->ModelUser->getUserWhere(['role_id' => 1])->num_rows(); ?></div>
+              <div class="h1 mb-0 font-weight-bold text-white">
+                <?= $this->ModelUser->getUserWhere(['role_id' => 1])->num_rows(); ?></div>
             </div>
             <div class="col-auto">
               <a href="<?= base_url('user/anggota'); ?>"><i class="fas fa-users fa-3x text-warning"></i></a>
@@ -24,7 +25,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-md font-weight-bold text-white text-uppercase mb-1">Stok Buku Terdaftar</div>
+              <div class="text-md font-weight-bold text-white text-uppercase mb-1">Stok Buku Terdaftar
+              </div>
               <div class="h1 mb-0 font-weight-bold text-white">
                 <?php
                 $where = ['stok != 0'];
@@ -46,7 +48,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dipinjam</div>
+              <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dipinjam
+              </div>
               <div class="h1 mb-0 font-weight-bold text-white">
                 <?php
                 $where = ['dipinjam != 0'];
@@ -68,7 +71,8 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dibooking</div>
+              <div class="text-md font-weight-bold text-white text-uppercase mb-1">Buku yang dibooking
+              </div>
               <div class="h1 mb-0 font-weight-bold text-white">
                 <?php
                 $where = ['dibooking !=0'];
@@ -87,52 +91,49 @@
   </div>
   <!-- end row ux-->
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Anggota</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Buku</a>
+    </li>
+  </ul>
 
-  <!-- row table-->
-  <div class="row">
-    <div class="table-responsive table-bordered col-sm-5 ml-auto mr-auto mt-2">
-      <div class="page-header">
-        <span class="fas fa-users text-primary mt-2 "> Data User</span>
-        <a class="text-danger" href="<?php echo base_url('user/data_user'); ?>"><i class="fas fa-search mt-2 float-right"> Tampilkan</i></a>
-      </div>
-      <table class="table mt-3">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nama Anggota</th>
-            <th>Email</th>
-            <th>Role ID</th>
-            <th>Aktif</th>
-            <th>Member Sejak</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $i = 1;
-          foreach ($anggota as $a) { ?>
-            <tr>
-              <td><?= $i++; ?></td>
-              <td><?= $a['nama']; ?></td>
-              <td><?= $a['email']; ?></td>
-              <td><?= $a['role_id']; ?></td>
-              <td><?= $a['is_active']; ?></td>
-              <td><?= date('Y', $a['tanggal_input']); ?></td>
-            </tr>
-          <?php } ?>
-        </tbody>
-      </table>
-    </div>
-
-
-    <div class="table-responsive table-bordered col-sm-5 ml-auto mr-auto mt-2">
-      <div class="page-header">
-        <span class="fas fa-book text-warning mt-2"> Data Buku</span>
-        <a href="<?= base_url('buku'); ?>"><i class="fas fa-search text-primary mt-2 float-right"> Tampilkan</i></a>
-      </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="table-responsive">
-        <table class="table mt-3" id="table-datatable">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nama Anggota</th>
+              <th>Email</th>
+              <th>Role ID</th>
+              <th>Aktif</th>
+              <th>Member Sejak</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $i = 1;
+            foreach ($anggota as $a) { ?>
+              <tr>
+                <td><?= $i++; ?></td>
+                <td><?= $a['nama']; ?></td>
+                <td><?= $a['email']; ?></td>
+                <td><?= $a['role_id']; ?></td>
+                <td><?= $a['is_active']; ?></td>
+                <td><?= date('Y', $a['tanggal_input']); ?></td>
+              </tr>
+            <?php } ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="table-responsive ">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th>#</th>
@@ -162,10 +163,7 @@
         </table>
       </div>
     </div>
-
-
   </div>
-  <!-- end of row table-->
 
 </div>
 <!-- /.container-fluid -->

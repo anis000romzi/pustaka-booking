@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+
 class Autentifikasi extends CI_Controller
 {
 
